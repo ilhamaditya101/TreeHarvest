@@ -50,7 +50,13 @@ public final class TreeListener implements Listener {
         Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"sk xp add "+p.getName()+" foraging "+xp+" true");
     }
     private void giveRewards(Player p){
-        for(String s:plugin.getConfig().getStringList("leaves.rewards")){String[] a=s.split("\\|");if(a.length<4)continue;try{if(rng.nextDouble()*100.0>Double.parseDouble(a[a.length-1]))continue;if(a[0].equalsIgnoreCase("VANILLA")){Material m=Material.matchMaterial(a[1]);if(m!=null)p.getInventory().addItem(new ItemStack(m,Math.max(1,Integer.parseInt(a[2]))));}else if(a[0].equalsIgnoreCase("MMOITEMS")){p.sendMessage(TreeHarvestPlugin.color("&eMMOItems reward configured: "+a[2]));}}catch(Exception ignored){}}
+        for(String s:plugin.getConfig().getStringList("leaves.rewards")){String[] a=s.split("\\|");if(a.length<4)continue;try{if(rng.nextDouble()*100.0>Double.parseDouble(a[a.length-1]))continue;if(a[0].equalsIgnoreCase("VANILLA")){Material m=Material.matchMaterial(a[1]);if(m!=null)p.getInventory().addItem(new ItemStack(m,Math.max(1,Integer.parseInt(a[2]))));}else if(a[0].equalsIgnoreCase("MMOITEMS")){
+                        String type=a[1], id=a[2];
+                        int amount=Math.max(1,Integer.parseInt(a[3]));
+                        String command=plugin.getConfig().getString("leaves.mmoitems-command", "mi give %player% %type% %id% %amount%");
+                        command=command.replace("%player%", p.getName()).replace("%type%", type).replace("%id%", id).replace("%amount%", String.valueOf(amount));
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command);
+                    }}catch(Exception ignored){}}
     }
     private ItemStack item(Material m,String n){ItemStack i=new ItemStack(m);ItemMeta im=i.getItemMeta();if(im!=null){im.setDisplayName(TreeHarvestPlugin.color(n));i.setItemMeta(im);}return i;}
     private String msg(String path){return TreeHarvestPlugin.color(plugin.getConfig().getString(path));}
