@@ -1,0 +1,27 @@
+tree:
+  enabled: true
+  foraging-xp: 300
+  minigame:
+    title: "&2Chopping Minigame"
+    confirm-title: "&6Chop this tree?"
+    red-material: RED_STAINED_GLASS_PANE
+    success-material: LIME_STAINED_GLASS_PANE
+
+leaves:
+  enabled: true
+  cooldown-seconds: 60
+  rewards:
+    - "VANILLA|APPLE|1|100"
+    - "VANILLA|STICK|2|50"
+    # MMOITEMS|TYPE|ITEM_ID|AMOUNT|CHANCE
+    # - "MMOITEMS|MATERIAL|MAGIC_LEAF|1|25"
+
+tree-detection:
+  max-blocks: 512
+
+messages:
+  no-permission: "&cNo permission."
+  success: "&aTree chopped! &e+%xp% Foraging XP"
+  failed: "&cYou missed the green pane."
+  leaf-cooldown: "&eThis tree is on cooldown for you: &f%seconds%s"
+  leaf-reward: "&aYou harvested the leaves!"

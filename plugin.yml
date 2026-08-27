@@ -1,0 +1,13 @@
+name: TreeHarvest
+version: 1.0.0
+main: id.yeue.treeharvest.TreeHarvestPlugin
+api-version: '1.20'
+softdepend: [AuraSkills, MMOItems]
+commands:
+  treeharvest:
+    description: TreeHarvest admin command
+    usage: /treeharvest reload
+    permission: treeharvest.admin
+permissions:
+  treeharvest.admin:
+    default: op
