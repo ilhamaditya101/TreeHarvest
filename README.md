@@ -20,9 +20,10 @@ The MMOItems section is a hook because MMOItems API signatures vary between rele
 GitHub Actions runs `gradle build` and uploads `build/libs/TreeHarvest-1.0.0.jar` as an artifact.
 
 
-## AuraSkills
-
-This version targets AuraSkills API 2.2.4 using Maven Central:
-`dev.aurelium:auraskills-api-bukkit:2.2.4`.
-
-For the 300 Foraging XP reward, the plugin uses AuraSkills' admin command `/sk xp add <player> <skill> <amount> [silent]`, so no unstable internal API is required.
+## Build compatibility fix
+- Paper API: 1.20.1
+- Java: 17
+- AuraSkills API: 2.2.4 from Maven Central
+- No dependency on repo.lumine.io
+- No MMOItems SNAPSHOT API dependency; MMOItems rewards are dispatched through the configurable `leaves.mmoitems-command`.
+- AuraSkills XP uses `/sk xp add <player> foraging <amount> true`.
