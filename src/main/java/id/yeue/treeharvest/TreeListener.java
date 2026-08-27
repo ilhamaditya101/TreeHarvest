@@ -47,7 +47,7 @@ public final class TreeListener implements Listener {
     }
     private void giveXp(Player p,int xp){
         if(Bukkit.getPluginManager().getPlugin("AuraSkills")==null)return;
-        Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"auraskills xp add "+p.getName()+" foraging "+xp);
+        Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"sk xp add "+p.getName()+" foraging "+xp+" true");
     }
     private void giveRewards(Player p){
         for(String s:plugin.getConfig().getStringList("leaves.rewards")){String[] a=s.split("\\|");if(a.length<4)continue;try{if(rng.nextDouble()*100.0>Double.parseDouble(a[a.length-1]))continue;if(a[0].equalsIgnoreCase("VANILLA")){Material m=Material.matchMaterial(a[1]);if(m!=null)p.getInventory().addItem(new ItemStack(m,Math.max(1,Integer.parseInt(a[2]))));}else if(a[0].equalsIgnoreCase("MMOITEMS")){p.sendMessage(TreeHarvestPlugin.color("&eMMOItems reward configured: "+a[2]));}}catch(Exception ignored){}}
