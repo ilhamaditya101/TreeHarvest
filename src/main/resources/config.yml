@@ -15,6 +15,7 @@ leaves:
     - "VANILLA|STICK|2|50"
     # MMOITEMS|TYPE|ITEM_ID|AMOUNT|CHANCE
     # - "MMOITEMS|MATERIAL|MAGIC_LEAF|1|25"
+  mmoitems-command: "mi give %player% %type% %id% %amount%"
 
 tree-detection:
   max-blocks: 512
